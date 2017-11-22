@@ -19,7 +19,6 @@ architecture bench of lab1_tb is
   signal d: STD_LOGIC_VECTOR (3 downto 0);
   signal sel: STD_LOGIC_VECTOR (1 downto 0);
   signal q: STD_LOGIC_VECTOR (3 downto 0);
-  signal q1, q2, q3, q4: STD_LOGIC_VECTOR (3 downto 0);
 
   constant clock_period: time := 20 ns;
   signal stop_the_clock: boolean;
@@ -28,26 +27,31 @@ begin
 
   stimulus: process
   begin
- 
-  
-    -- Put initialisation code here
     
-    d <= "0001";    
+    d <= "0000";
     sel <= "00";
     wait until (clk'EVENT AND clk='1');
-    d <= "0101";    
+    d <= "0001";
     sel <= "00";
+    wait until (clk'EVENT AND clk='1');
+    d <= "0010";    
+    sel <= "01";
     wait until (clk'EVENT AND clk='1');
     d <= "0011";    
-    sel <= "00";
+    sel <= "10";
     wait until (clk'EVENT AND clk='1');        
-    d <= "1001";    
-    sel <= "01";
-    wait until (clk'EVENT AND clk='1');
     d <= "0100";    
+    sel <= "11";
+    wait until (clk'EVENT AND clk='1');
+    d <= "0101";    
+    sel <= "10";
+    wait until (clk'EVENT AND clk='1');
+    d <= "0110";    
     sel <= "01";
     wait until (clk'EVENT AND clk='1');
-    -- Put test bench stimulus code here
+    d <= "0111";    
+    sel <= "00";
+    wait until (clk'EVENT AND clk='1');
 
     stop_the_clock <= true;
     wait;
